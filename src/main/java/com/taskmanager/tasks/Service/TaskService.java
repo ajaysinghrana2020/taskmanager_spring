@@ -1,7 +1,9 @@
 package com.taskmanager.tasks.Service;
 
+import com.taskmanager.tasks.Dto.TaskResponseDTO;
 import com.taskmanager.tasks.Entity.TaskEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Repository
+@Service
 public class TaskService {
 
     private List<TaskEntity> tasks= new ArrayList<>();
@@ -41,8 +43,6 @@ public class TaskService {
                 .filter(task -> task.getId() == id)
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-
-
     }
 
     public List<TaskEntity> deleteTaskById(int id){
